@@ -4,6 +4,7 @@ import sqlite3
 connection = sqlite3.connect("banco.db")
 cursor = connection.cursor()
 cursor.execute("create table alunos (matricula text, nome text, ano integer)")
+cursor.execute("create table materias (codigo integer, nome text, carga integer)")
 
 nomes = [
     "Helena",
@@ -174,13 +175,67 @@ sobrenomes = [
 anos = [2019,2020,2021,2022,2023,2024]
 anos = random.choices(anos, k=50)
 
-alunos = [[
+alunos = [(
     str(ano)+str(random.randint(1000,9999)),
     f"{random.choice(nomes)} {random.choice(sobrenomes)}",
     ano
-    ] for ano in anos
+    ) for ano in anos
 ]
 
 cursor.executemany("insert into alunos values (?,?,?)", alunos)
+
+materias = [
+    ["INTRODUÇÃO A PROGRAMAÇÃO DE COMPUTADORES",80],
+    ["ARQUITETURA DE COMPUTADORES",80],
+    ["FUNDAMENTOS DE REDES DE COMPUTADORES",80],
+    ["INTRODUÇÃO À SEGURANÇA DA INFORMAÇÃO",80],
+    ["PENSAMENTO COMPUTACIONAL",80],
+    ["BANCO DE DADOS",80],
+    ["DESENV. WEB EM HTML5, CSS, JAVASCRIPT E PHP",80],
+    ["PARADIGMAS DE LINGUAGENS DE PROGRAMAÇÃO EM PYTHON",80],
+    ["COMPUTAÇÃO EM NUVEM",80],
+    ["DESENVOLVIMENTO RÁPIDO DE APLICAÇÕES EM PYTHON",80],
+    ["ESTRUTURA DE DADOS",80],
+    ["MATEMÁTICA E LÓGICA",80],
+    ["PROTOCOLOS DE REDES DE COMPUTADORES",80],
+    ["SISTEMAS OPERACIONAIS",80],
+    ["SISTEMAS DE INFORMAÇÃO E SOCIEDADE",80],
+    ["ANÁLISE DE DADOS",80],
+    ["CÁLCULO DIFERENCIAL E INTEGRAL",80],
+    ["PROGRAMAÇÃO DE SOFTWARE BÁSICO EM C",80],
+    ["SISTEMAS DIGITAIS",80],
+    ["MODELAGEM DE SISTEMAS EM UML",80],
+    ["CÁLCULO DE MÚLTIPLAS VARIÁVEIS",80],
+    ["GEOMETRIA ANALÍTICA E ÁLGEBRA LINEAR",80],
+    ["SISTEMAS DISTRIBUÍDOS E COMPUTAÇÃO PARALELA",80],
+    ["ALGORITMOS E COMPLEXIDADE",80],
+    ["ENGENHARIA DE SOFTWARE",80],
+    ["PROGRAMAÇÃO ORIENTADA A OBJETOS EM JAVA",80],
+    ["MÉTODOS QUANTITATIVOS",80],
+    ["ALGORITMOS EM GRAFOS",80],
+    ["PROGRAMAÇÃO DE MICROCONTROLADORES",80],
+    ["LINGUAGENS FORMAIS E AUTÔMATOS",80],
+    ["APLIC. DE CLOUD, IOT E INDÚSTRIA 4.0 EM PYTHON",80],
+    ["INTELIGÊNCIA ARTIFICIAL",80],
+    ["PROGRAMAÇÃO PARA DISPOSITIVOS MÓVEIS EM ANDROID",80],
+    ["PADRÕES DE PROJETOS DE SOFTWARE COM JAVA",80],
+    ["MODELAGEM MATEMÁTICA",80],
+    ["TÓPICOS EM LIBRAS: SURDEZ E INCLUSÃO",80],
+    ["TÓPICOS DE BIG DATA EM PYTHON",80],
+    ["ALGORITMOS DE PROCESSAMENTO DE IMAGEM",80],
+    ["COMPILADORES",80],
+    ["SEGURANÇA CIBERNÉTICA",80]
+]
+
+materias = [(
+    i,materias[i][0],materias[i][1]
+    ) for i in range(len(materias))
+]
+
+cursor.executemany("insert into materias values (?,?,?)", materias)
+for row in cursor.execute("select * from materias"):
+    print(row)
+for row in cursor.execute("select * from alunos"):
+    print(row)
 
 connection.close()
