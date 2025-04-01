@@ -5,6 +5,7 @@ connection = sqlite3.connect("banco.db")
 cursor = connection.cursor()
 cursor.execute("create table alunos (matricula text, nome text, ano integer)")
 cursor.execute("create table materias (codigo integer, nome text, carga integer)")
+cursor.execute("create table notas (materia text, aluno text, periodo integer, sim1 float, sim2 float, av float, avs float)")
 
 nomes = [
     "Helena",
@@ -227,15 +228,37 @@ materias = [
     ["SEGURANÇA CIBERNÉTICA",80]
 ]
 
-materias = [(
+materiasSQL = [(
     i,materias[i][0],materias[i][1]
     ) for i in range(len(materias))
 ]
 
-cursor.executemany("insert into materias values (?,?,?)", materias)
-for row in cursor.execute("select * from materias"):
-    print(row)
-for row in cursor.execute("select * from alunos"):
-    print(row)
+cursor.executemany("insert into materias values (?,?,?)", materiasSQL)
+
+notas = []
+materiasAlunos = {}
+
+for aluno in alunos:
+    periodo = 2025 - aluno[2]
+    materiasAlunos[aluno[1]] = []
+    for i in range(periodo):
+        for i in range(5):
+            check = True
+            materia = ""
+            while check:
+                materia = random.choice(materias)
+                materia = materia[0]
+                if materia in materiasAlunos[aluno[1]]:
+                    pass
+                else:
+                    materiasAlunos[aluno[1]].append(materia)
+                    check = False
+            sim1 = float(random.randint(0,1)/2)
+            sim2 = float(random.randint(0,1)/2)
+            av = float(random.randint(0,10))
+            avs = float(random.randint(0,10))
+            notas.append((materia,aluno[0],2025-aluno[2],sim1,sim2,av,avs))
+
+cursor.executemany("insert into notas values (?,?,?,?,?,?,?)", notas)
 
 connection.close()
