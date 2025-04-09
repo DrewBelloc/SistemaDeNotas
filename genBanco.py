@@ -260,5 +260,6 @@ for aluno in alunos:
             notas.append((materia,aluno[0],2025-aluno[2],sim1,sim2,av,avs))
 
 cursor.executemany("insert into notas values (?,?,?,?,?,?,?)", notas)
+connection.commit()
 
 connection.close()
