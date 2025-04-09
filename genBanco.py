@@ -253,8 +253,8 @@ for aluno in alunos:
                 else:
                     materiasAlunos[aluno[1]].append(materia)
                     check = False
-            sim1 = float(random.randint(0,1)/2)
-            sim2 = float(random.randint(0,1)/2)
+            sim1 = float(random.randint(0,10)/10)
+            sim2 = float(random.randint(0,10)/10)
             av = float(random.randint(0,10))
             avs = float(random.randint(0,10))
             notas.append((materia,aluno[0],2025-aluno[2],sim1,sim2,av,avs))
