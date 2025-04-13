@@ -1,15 +1,20 @@
 import sqlite3
 
 class Banco:
-
     connection = None
     cursor = None
 
     def __init__(self):
-        pass
+        try:
+            self.connect()
+            print("Conexão com o banco realizada com sucesso!")
+        except Exception as error:
+            print(f"Erro ao conectar no banco: {error}")
 
     def connect(self):
-        pass
+        self.connection = sqlite3.connect('banco.db')
+        self.cursor = self.connection.cursor()
 
     def close(self):
-        pass
+        if self.connection:
+            self.connection.close()
