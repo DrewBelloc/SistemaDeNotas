@@ -7,5 +7,9 @@ app = Flask(__name__)
 def main():
     return render_template("script.html")
 
+@app.route("/teste")
+def test():
+    return render_template("teste.html")
+
 if __name__=="__main__":
     main()
