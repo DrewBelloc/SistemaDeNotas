@@ -18,3 +18,6 @@ class Banco:
     def close(self):
         if self.connection:
             self.connection.close()
+
+    def getAluno(int: matricula):
+        pass
