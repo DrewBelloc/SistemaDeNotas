@@ -22,17 +22,6 @@ body{
     list-style-type: none;
 }
 
-#container_Pesquisa{
-border-radius: 50px;
-color: black;
-}
-
-#botões_de_ação {
-    color: black;
-
-}
-
-
 
 @media (max-width: 768px) {
     .lista_de_alunos {
