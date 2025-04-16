@@ -13,4 +13,4 @@ def test():
     return render_template("teste.html")
 
 if __name__=="__main__": # Faz uma checagem para confirmar que esse é o modulo principal
-    main() # Inicia o servidor
+    app.run() # Inicia o servidor
