@@ -2,5 +2,22 @@
 
 {% block body %}
 <!-- Coloca o codigo dentro desse bloco -->
-
+<div id="container_Pesquisa"> <i class="bi bi-search"></i>
+    <input type="text"  placeholder="Pesquisar Aluno">
+    <button class="btn btn-primary" type="button">Cadastrar Aluno</button>
+</div>
+<ul class="lista_de_alunos" id="alunosLista">
+    <li class="list-group-item active" aria-current="true">
+        <i class="bi bi-person"></i> aluno1
+    </li>
+    <li class="list-group-item">
+        <i class="bi bi-person"></i> Aluno 1
+    </li>
+    <li class="list-group-item">
+        <i class="bi bi-person"></i> Aluno 2
+    </li>
+  </ul>
+  <div id="botões_de_ação">
+    <button class="btn btn-primary" type="button">Cadastrar Aluno</button>
+  </div>
 {% endblock %}
