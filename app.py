@@ -12,4 +12,4 @@ def test():
     return render_template("teste.html")
 
 if __name__=="__main__":
-    main()
+    app.run()
