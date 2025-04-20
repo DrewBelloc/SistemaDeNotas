@@ -2,12 +2,35 @@
 
 {% block body %}
 <!-- Coloca o codigo dentro desse bloco -->
-<div id="container_Pesquisa"> <i class="bi bi-search"></i>
-    <input type="text"  placeholder="Pesquisar Aluno">
-    <button class="btn btn-primary" type="button">Cadastrar Aluno</button>
+<header>
+        <div class="border justify-content-end container-flex">
+            <div class="row">
+                <div class="input-group col-13">
+                    <input type="number" class="input-text " placeholder="Pesquisar Aluno">
+                    <button class="btn btn-primary" type="button"><i class="bi bi-search" style="fg:black;""></i> pesquisa</button>
+                    <button class="btn btn-primary" type="button">Cadastrar Aluno</button>
+                </div>
+            </div>
+        </div>
+</header>
+
+<!-- --
+<div class="container">
+<div id="lista_de_alunos" class="container justify-content-end" style="13rm">
+    <div class="row card">
+        <h5 class="card-title">aluno</h5>
+        <p class="card-text">20250021234</p>
+    </div>
+    <div class="row container">
+    </div>
+    <div class="row container">
+    </div>
 </div>
-<ul class="lista_de_alunos" id="alunosLista">
-    <li class="list-group-item active" aria-current="true">
+</div>
+
+<div class="container-flex">
+<ul class="list-group col-8" id="alunosLista">
+    <li class="list-group-item" aria-current="true">
         <i class="bi bi-person"></i> aluno1
     </li>
     <li class="list-group-item">
@@ -17,7 +40,29 @@
         <i class="bi bi-person"></i> Aluno 2
     </li>
   </ul>
-  <div id="botões_de_ação">
-    <button class="btn btn-primary" type="button">Cadastrar Aluno</button>
-  </div>
+</div>
+  ---->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="board-column p-4">
+                <h2 class="text-center">Login</h2>
+                <form action="/login_user" method="POST">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Entrar</button>
+                </form>
+                <div class="text-center mt-3">
+                    <a href="/register" class="text-decoration-none">Não tem uma conta? Cadastre-se</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
