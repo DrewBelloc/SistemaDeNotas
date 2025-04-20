@@ -1,5 +1,5 @@
 body{
-    background-color: #bf9780;
+    background-color: ##F5F5F5;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -11,7 +11,7 @@ body{
     float: right;
     margin-right: 5vh;
     margin-top: 5vh;
-    border: 2px solid #ffffeb;
+    border: 2px solid black;
     border-radius: 8px;
     padding: 40vh;
     /*max-width: 5vh;;
@@ -22,6 +22,17 @@ body{
     list-style-type: none;
 }
 
+#Pesquisa{
+    position: relative;
+    border-radius: 50px;
+    width: 30%;
+    left: 25px;
+}
+#cadastro{
+    position: relative;
+    background-color: black;
+    left: 40%;
+}
 
 @media (max-width: 768px) {
     .lista_de_alunos {
