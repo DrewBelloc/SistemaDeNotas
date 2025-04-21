@@ -1,0 +1,53 @@
+body {
+    background-color: #CBAF87;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px; /* Ajuda a evitar que o conteúdo grude nas bordas em telas pequenas */
+    box-sizing: border-box;
+}
+
+input {
+    background-color: #F2EFE5;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 3px solid #504B38;
+    width: 300px;
+    padding: 8px;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+.btn.btn-primary {
+    color: #F2EFE5;
+    background-color: #504B38;
+    border: none;
+    border-radius: 50px;
+    width: 150px;
+    height: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 30%;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 480px) {
+    input {
+        width: 100%; /* O input ocupa toda a largura disponível */
+    }
+
+    .btn.btn-primary {
+        width: 100%;
+        margin-left: 0; /* Centraliza o botão */
+    }
+
+    body {
+        flex-direction: column; /* Alinha os itens em coluna */
+    }
+}

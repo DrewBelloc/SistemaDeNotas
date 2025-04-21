@@ -1,16 +1,20 @@
+from flask import Flask, render_template
 import sqlite3
-from flask import Flask, request, render_template
 
-app = Flask(__name__)
+app = Flask(__name__)  # TEM QUE vir antes de qualquer @app.route
 
-# Rota para a tela padrão
-@app.route("/") # Define a URL que o cliente irá acessar
-def index(): # Função que será ativada quando o cliente acessar a URL acima
-    return render_template("script.html") # Faz a construção da pagina e retorna para  cliente no navegador
-
-@app.route("/teste") # uRL feita exclusivamente para quem estiver trabalhando no frontend tenha um lugar para testar sem precisar esperar pelo backend
+@app.route("/teste")
 def test():
-    return render_template("teste.html")
+    connection = sqlite3.connect("banco.db")
+    cursor = connection.cursor()
 
-if __name__=="__main__": # Faz uma checagem para confirmar que esse é o modulo principal
-    app.run() # Inicia o servidor flask.
+    # Busca só os alunos
+    cursor.execute("SELECT nome FROM alunos")
+    alunos = [{"nome": row[0], "tipo": "Aluno"} for row in cursor.fetchall()]
+
+    connection.close()
+
+    # Ordena os alunos por nome
+    alunos.sort(key=lambda x: x["nome"])
+
+    return render_template("teste.html", itens=alunos)
