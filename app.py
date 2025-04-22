@@ -4,12 +4,44 @@ from flask import Flask, render_template
 app = Flask(__name__)
 db = Banco()
 
+
 # Rota para a tela padrão
-
-
 @app.route("/")  # Define a URL que o cliente irá acessar
 def index():  # Função que será ativada quando o cliente acessar a URL acima
     return render_template("script.html")
+
+
+@app.route("/aluno/<matricula>")
+def aluno(matricula):
+    status, aluno = db.getAluno(matricula)
+    if status:
+        return f"<h1>{aluno['nome']}</h1>"
+    else:
+        return aluno
+
+
+@app.route("/alunos/")
+def alunos():
+    alunos = db.getAllAlunos()
+    html = ""
+    for i in alunos:
+        html += f"<h2>{i['nome']}</h2>\n"
+    return html
+
+
+@app.route("/editar/<matricula>")
+def editar(matricula):
+    aluno = db.getAluno(matricula)
+    return f"<h1>{aluno['nome']}</h1>"
+
+
+@app.route("/teste/<disciplina>")
+def testeback(disciplina):
+    status, aluno = db.getAlunos(disciplina)
+    if status:
+        return f"{aluno}"
+    else:
+        return aluno
 
 
 @app.route("/teste")

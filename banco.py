@@ -20,21 +20,58 @@ class Banco:
         if self.connection:
             self.connection.close()
 
-    def getAluno(self, matricula: int):
+    def getAllAlunos(self) -> list:
         self.connect()
-        if matricula == 0:
-            self.cursor.execute("select * from alunos")
-            alunos = [
-                {"matricula": row[0], "nome": row[1], "ano": row[2]}
-                for row in self.cursor.fetchall()
-            ]
-            return alunos
-        else:
-            self.cursor.execute(
-                f"select * from alunos where matricula={matricula}"
-            )
-            alunos = [
-                {"matricula": row[0], "nome": row[1], "ano": row[2]}
-                for row in self.cursor.fetchall()
-            ]
-            return alunos[0]
+        self.cursor.execute("select * from alunos")
+        alunos = [
+            {"matricula": row[0], "nome": row[1], "ano": row[2]}
+            for row in self.cursor.fetchall()
+        ]
+        self.close()
+        return alunos
+
+    def getAluno(self, matricula: int) -> dict:
+        self.connect()
+        self.cursor.execute(
+            f"select * from alunos where matricula={matricula}"
+        )
+        alunos = [
+            {"matricula": row[0], "nome": row[1], "ano": row[2]}
+            for row in self.cursor.fetchall()
+        ]
+        self.close()
+        try:
+            return True, alunos[0]
+        except IndexError:
+            return False, "Aluno não encontrado"
+
+    def getAlunos(self, disciplina: int) -> list:
+        self.connect()
+        self.cursor.execute(
+            f"select * from materias where codigo={disciplina}"
+        )
+        materia = [
+            {"codigo": row[0], "nome": row[1], "carga": row[2]}
+            for row in self.cursor.fetchall()
+        ]
+        try:
+            materia[0]
+        except IndexError:
+            return False, "Disciplina não encontrado"
+        self.cursor.execute(
+            f"select * from notas where materia='{materia[0]['nome']}'"
+        )
+        alunos = self.cursor.fetchall()
+        lista = []
+        for i in alunos:
+            x, y = self.getAluno(i[1])
+            lista.append(y)
+        self.close()
+        try:
+            lista[0]
+            return True, lista
+        except IndexError:
+            return False, "Nenhum aluno não encontrado"
+
+    def getSemestre(self, matricula: int, semestre: int):
+        pass
