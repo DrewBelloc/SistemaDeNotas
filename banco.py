@@ -1,5 +1,6 @@
 import sqlite3
 
+
 class Banco:
     connection = None
     cursor = None
@@ -19,5 +20,5 @@ class Banco:
         if self.connection:
             self.connection.close()
 
-    def getAluno(int: matricula):
+    def getAluno(matricula: int):
         pass

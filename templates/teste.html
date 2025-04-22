@@ -1,25 +1,38 @@
 {% extends "script.html" %}
 
 {% block body %}
-<!-- Coloca o codigo dentro desse bloco -->
-<div id="container_Pesquisa"> <i class="bi bi-search"></i>
-    <input type="text"  placeholder="Pesquisar Aluno">
-    <button class="btn btn-primary" type="button">Cadastrar Aluno</button>
+<div id="container_Pesquisa">
+    <!-- Campo de pesquisa com a lupa ainda visível -->
+    <input type="text" id="pesquisa" placeholder="Pesquisar Aluno...."> <i class="bi bi-search"></i>
 </div>
 
+<button class="btn btn-primary" type="button">Cadastrar Aluno</button>
+
 <div class="container-flex">
-<ul class="list-group col-8" id="alunosLista">
-    <li class="list-group-item" aria-current="true">
-        <i class="bi bi-person"></i> aluno1
-    </li>
-    <li class="list-group-item">
-        <i class="bi bi-person"></i> Aluno 1
-    </li>
-    <li class="list-group-item">
-        <i class="bi bi-person"></i> Aluno 2
-    </li>
-  </ul>
-  <div id="botões_de_ação">
-    <button class="btn btn-primary" type="button">Cadastrar Aluno</button>
-  </div>
+    <ul class="list-group col-8" id="alunosLista">
+        <!-- Exemplo de alunos - o backend pode preencher isso dinamicamente -->
+        {% for item in itens %}
+        <li class="list-group-item aluno-item" aria-current="true">
+            <i class="bi bi-person"></i> {{ item.nome }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script>
+    // Captura o campo de pesquisa e a lista de alunos
+    const pesquisaInput = document.getElementById('pesquisa');
+    const alunoItems = document.querySelectorAll('.aluno-item');  // Seleciona todos os itens da lista de alunos
+
+    // Função para filtrar a lista de alunos conforme a digitação
+    pesquisaInput.addEventListener('input', function () {
+        const filtro = this.value.toLowerCase();  // Obtém o texto digitado
+        alunoItems.forEach(item => {
+            const texto = item.innerText.toLowerCase();  // Obtém o texto do aluno na lista
+            // Exibe ou oculta os itens com base no texto de busca
+            item.style.display = texto.includes(filtro) ? 'block' : 'none';
+        });
+    });
+</script>
+
 {% endblock %}
