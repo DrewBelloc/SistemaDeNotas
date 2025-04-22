@@ -14,15 +14,7 @@ def index():  # Função que será ativada quando o cliente acessar a URL acima
 
 @app.route("/teste")
 def test():
-    db.connect()
-
-    # Busca só os alunos
-    db.cursor.execute("SELECT nome FROM alunos")
-    alunos = [
-        {"nome": row[0], "tipo": "Aluno"}
-        for row in db.cursor.fetchall()
-    ]
-    db.close()
+    alunos = db.getAluno(0)
 
     # Ordena os alunos por nome
     alunos.sort(key=lambda x: x["nome"])
