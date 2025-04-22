@@ -20,5 +20,21 @@ class Banco:
         if self.connection:
             self.connection.close()
 
-    def getAluno(matricula: int):
-        pass
+    def getAluno(self, matricula: int):
+        self.connect()
+        if matricula == 0:
+            self.cursor.execute("select * from alunos")
+            alunos = [
+                {"matricula": row[0], "nome": row[1], "ano": row[2]}
+                for row in self.cursor.fetchall()
+            ]
+            return alunos
+        else:
+            self.cursor.execute(
+                f"select * from alunos where matricula={matricula}"
+            )
+            alunos = [
+                {"matricula": row[0], "nome": row[1], "ano": row[2]}
+                for row in self.cursor.fetchall()
+            ]
+            return alunos[0]
