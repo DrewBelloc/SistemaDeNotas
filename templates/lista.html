@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block listaDeAlunos %}
+<div class="container-flex">
+    <ul class="list-group col-8" id="alunosLista">
+        <!-- Exemplo de alunos - o backend pode preencher isso dinamicamente -->
+        {% for item in itens %}
+        <li class="list-group-item aluno-item" aria-current="true">
+            <i class="bi bi-person"></i> {{ item.nome }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
