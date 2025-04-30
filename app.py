@@ -46,7 +46,7 @@ def testeback(disciplina):
 
 @app.route("/teste")
 def test():
-    alunos = db.getAluno(0)
+    alunos = db.getAllAlunos()
 
     # Ordena os alunos por nome
     alunos.sort(key=lambda x: x["nome"])
