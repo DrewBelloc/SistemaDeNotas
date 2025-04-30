@@ -8,7 +8,10 @@ db = Banco()
 # Rota para a tela padrão
 @app.route("/")  # Define a URL que o cliente irá acessar
 def index():  # Função que será ativada quando o cliente acessar a URL acima
-    return render_template("script.html")
+    alunos = db.getAllAlunos()
+    # Ordena os alunos por nome
+    alunos.sort(key=lambda x: x["nome"])
+    return render_template("lista.html", itens=alunos)
 
 
 @app.route("/aluno/<matricula>")
@@ -46,12 +49,8 @@ def testeback(disciplina):
 
 @app.route("/teste")
 def test():
-    alunos = db.getAllAlunos()
+    return render_template("test.html")
 
-    # Ordena os alunos por nome
-    alunos.sort(key=lambda x: x["nome"])
-
-    return render_template("teste.html", itens=alunos)
 
 
 # checagem confirmando que esse é o modulo principal
