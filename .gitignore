@@ -175,3 +175,7 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 #banco.db
+
+pyproject.toml
+banco.db
+.replit

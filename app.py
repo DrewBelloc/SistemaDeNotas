@@ -48,8 +48,16 @@ def testeback(disciplina):
 
 @app.route("/add")
 def addAluno():
-    db.addAluno("20256969","Mandy")
+    db.addAluno("20256969","Mandy",2020)
     return redirect("/")
+
+@app.route("/mudarNome")
+def nomeAluno():
+    state, aluno = db.updateNome("20256969","Bender")
+    if state:
+        return f"nome do aluno foi atualizado para {aluno['nome']}"
+    else:
+        return aluno
 
 @app.route("/teste")
 def test():
