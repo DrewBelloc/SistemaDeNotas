@@ -1,5 +1,5 @@
 from banco import Banco
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 
 app = Flask(__name__)
 db = Banco()
@@ -46,6 +46,10 @@ def testeback(disciplina):
     else:
         return aluno
 
+@app.route("/add")
+def addAluno():
+    db.addAluno("20256969","Mandy")
+    return redirect("/")
 
 @app.route("/teste")
 def test():
