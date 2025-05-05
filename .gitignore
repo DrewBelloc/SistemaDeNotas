@@ -177,4 +177,5 @@ cython_debug/
 #banco.db
 
 pyproject.toml
+banco.db
 .replit
