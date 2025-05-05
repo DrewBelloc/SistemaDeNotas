@@ -75,3 +75,10 @@ class Banco:
 
     def getSemestre(self, matricula: int, semestre: int):
         pass
+
+    def addAluno(self, name, matricula, ano=2025):
+        self.connect()
+        self.cursor.execute('INSERT INTO alunos (matricula, nome, ano) VALUES (?,?,?)', (name, matricula, ano))
+        self.connection.commit()
+        self.close()
+
