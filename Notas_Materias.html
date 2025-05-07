@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Notas_Materias.css">
+    <title>Notas</title>
+</head>
+<body>
+
+    <div class="NotaFinal">
+        <h2>Nota Final</h2>
+        <ul>
+            <li><input type="number" id="nf" readonly></li>
+        </ul>
+    </div>
+    <br><br>
+    <div class="blocos">
+        <div class="Simulado1">
+            <ul>
+                <li>Simulado 1: <br> <br><input type="number" id="sim1"></li>
+            </ul>
+            <br><br>
+            <button class="sm1">Adicionar Nota</button>
+        </div>
+    
+        <div class="Simulado2">
+            <ul>
+                <li>Simulado 2: <br><br> <input type="number" id="sim2"></li>
+            </ul>
+            <br><br>
+            <button class="sm2">Adicionar Nota</button>
+        </div>
+    
+        <div class="AV">
+            <ul>
+                <li>AV: <br><br> <input type="number" id="av"></li>
+            </ul>
+            <br><br>
+            <button class="av">Adicionar Nota</button>
+    
+        </div>
+    
+        <div class="AVS">
+            <ul>
+                <li>AVS: <br> <br> <input type="number" id="avs"></li>
+            </ul>
+            <br><br>
+            <button class="avs">Adicionar Nota</button>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    
+    let notaSim1 = 0;
+    let notaSim2 = 0;
+    let notaAV = 0;
+    let notaAVS = 0;
+
+    
+    const notaFinal = document.getElementById("nf");
+
+    
+    function atualizarNotaFinal() {
+        const soma = notaSim1 + notaSim2 + notaAV + notaAVS;
+        notaFinal.value = soma.toFixed(2); 
+    }
+
+    
+    document.querySelector(".sm1").addEventListener("click", function () {
+        notaSim1 = parseFloat(document.getElementById("sim1").value) || 0;
+        atualizarNotaFinal();
+    });
+
+    document.querySelector(".sm2").addEventListener("click", function () {
+        notaSim2 = parseFloat(document.getElementById("sim2").value) || 0;
+        atualizarNotaFinal();
+    });
+
+    document.querySelector(".av").addEventListener("click", function () {
+        notaAV = parseFloat(document.getElementById("av").value) || 0;
+        atualizarNotaFinal();
+    });
+
+    document.querySelector(".avs").addEventListener("click", function () {
+        notaAVS = parseFloat(document.getElementById("avs").value) || 0;
+        atualizarNotaFinal();
+    });
+</script>
+
+</html>
