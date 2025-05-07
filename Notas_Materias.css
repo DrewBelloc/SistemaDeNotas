@@ -1,0 +1,34 @@
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.NotaFinal {
+    background-color: #f0f0f0; /*cor borda*/
+    padding: 100px; /*tam da borda*/
+    border-radius: 8px; /*curvatura borda*/
+    width: 200px; /*largura da borda*/
+    margin: 20px auto; /*margin pra centralizar*/
+    text-align: center; /*alinhando texto ao centro*/
+    
+}
+
+.blocos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.Simulado1,
+.Simulado2,
+.AV,
+.AVS {
+    background-color: #f0f0f0;
+    padding: 100px;
+    border-radius: 8px;
+    width: 150px;
+    text-align: center;
+}
