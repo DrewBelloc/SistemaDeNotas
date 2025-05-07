@@ -53,7 +53,7 @@ def addAluno():
 
 @app.route("/teste")
 def test():
-    return render_template("test.html")
+    return render_template("telacadastro.html")
 
 
 
