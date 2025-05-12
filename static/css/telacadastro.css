@@ -8,7 +8,8 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    padding: 20px; /* Ajuda a evitar que o conteúdo grude nas bordas em telas pequenas */
+    padding: 20px;
+    /* Ajuda a evitar que o conteúdo grude nas bordas em telas pequenas */
     box-sizing: border-box;
 }
 
@@ -39,15 +40,22 @@ input {
 /* Responsividade para telas menores */
 @media (max-width: 480px) {
     input {
-        width: 100%; /* O input ocupa toda a largura disponível */
+        width: 100%;
+        /* O input ocupa toda a largura disponível */
     }
 
     .btn.btn-primary {
         width: 100%;
-        margin-left: 0; /* Centraliza o botão */
+        margin-left: 0;
+        /* Centraliza o botão */
     }
 
     body {
-        flex-direction: column; /* Alinha os itens em coluna */
+        flex-direction: column;
+        /* Alinha os itens em coluna */
     }
+}
+
+.center {
+    margin: 5px auto;
 }

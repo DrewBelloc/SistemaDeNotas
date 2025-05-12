@@ -82,3 +82,24 @@ class Banco:
         self.connection.commit()
         self.close()
 
+    def updateNome(self, matricula, new_name):
+        state, aluno = self.getAluno(matricula)
+        if not aluno:
+            self.close()
+            return False, "Aluno não encontrado"
+    
+        if aluno['nome'] == new_name:
+            self.close()
+            return False, "O novo nome é igual ao atual"
+
+        self.connect()
+        self.cursor.execute('UPDATE alunos SET nome = ? WHERE matricula = ?', (new_name, matricula))
+        self.connection.commit()
+    
+        state, aluno_atualizado = self.getAluno(matricula)
+        if aluno_atualizado['nome'] == new_name:
+            self.close()
+            return True, aluno_atualizado
+        else:
+            self.close()
+            return False, "Falha ao atualizar o nome"

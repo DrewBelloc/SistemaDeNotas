@@ -1,0 +1,38 @@
+{% extends "script.html" %}
+
+{% block body %}
+<div class="cadastro">
+
+    <!-- Nome -->
+    <label class="center" for="nome">Aluno:</label>
+    <br>
+    <input class="center" type="text" name="nome" id="nome" required>
+    <br>
+
+    <!-- Matrícula -->
+    <label class="center" for="Matricula">Matrícula:</label>
+    <br>
+    <input class="center" type="number" name="Matricula" id="Matricula" required>
+    <br>
+
+    <!-- Disciplina -->
+    <label class="center" for="Disciplina">Disciplinas:</label>
+    <br>
+    <input class="center" type="text" name="Disciplina" id="Disciplina" required>
+    <br>
+
+    <!-- Ano -->
+    <label class="center" for="Ano">Ano:</label>
+    <br>
+    <input class="center" type="number" min="2000" max="2055" name="Ano" id="Ano" required>
+    <br>
+
+    <!-- Semestre -->
+    <label class="center" for="Semestre">Semestre:</label>
+    <br>
+    <input class="center" type="number" max="2" min="1" name="Semestre" id="Semestre" required>
+    <br>
+    <button style="margin: 0 auto;" class="btn btn-primary" type="button">Cadastrar</button>
+
+</div>
+{% endblock %}
