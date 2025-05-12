@@ -1,5 +1,5 @@
 body {
-    background-color: #CBAF87;
+    background-color: var(--bg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -7,6 +7,7 @@ body {
 }
 
 #alunosLista {
+    /*
     position: absolute;
     top: 15px;
     right: 5vh;
@@ -14,15 +15,22 @@ body {
     border-radius: 8px;
     width: 60%;
     height: calc(100vh - 80px);
+    */
     /* Ajusta a altura da lista */
+    /*
     padding: 10px;
     box-sizing: border-box;
     overflow-y: scroll;
+    */
     /* A rolagem será ativada quando necessário */
+    /*
     overflow-x: hidden;
+    */
     /* Esconde a rolagem lateral (horizontal) */
+    /*
     list-style-type: none;
     background-color: #B2B8A3;
+    */
     /* Cor de fundo da lista */
 }
 
