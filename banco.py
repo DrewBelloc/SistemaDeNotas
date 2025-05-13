@@ -87,7 +87,7 @@ class Banco:
         if not aluno:
             self.close()
             return False, "Aluno não encontrado"
-    
+
         if aluno['nome'] == new_name:
             self.close()
             return False, "O novo nome é igual ao atual"
@@ -95,7 +95,7 @@ class Banco:
         self.connect()
         self.cursor.execute('UPDATE alunos SET nome = ? WHERE matricula = ?', (new_name, matricula))
         self.connection.commit()
-    
+
         state, aluno_atualizado = self.getAluno(matricula)
         if aluno_atualizado['nome'] == new_name:
             self.close()
@@ -103,3 +103,58 @@ class Banco:
         else:
             self.close()
             return False, "Falha ao atualizar o nome"
+
+    def getAllDisciplinas(self, matricula: str) -> list:
+        self.connect()
+        self.cursor.execute(
+            "SELECT materia FROM notas WHERE aluno=?", (matricula,)
+        )
+        materias_notas = [row[0] for row in self.cursor.fetchall()]
+
+        disciplinas = []
+        for materia_nome in materias_notas:
+            self.cursor.execute(
+                "SELECT * FROM materias WHERE nome=?", (materia_nome,)
+            )
+            materia = self.cursor.fetchone()
+            if materia:
+                disciplinas.append({
+                    "codigo": materia[0],
+                    "nome": materia[1],
+                    "carga": materia[2]
+                })
+
+        self.close()
+        return disciplinas
+
+    def calcularCR(self, matricula: str) -> float:
+        disciplinas = self.getAllDisciplinas(matricula)
+
+        if not disciplinas:
+            return 0.0  # Retorna 0 se o aluno não tiver disciplinas
+
+        total_pontos = 0.0
+        total_cargas = 0
+
+        self.connect()
+
+        for disciplina in disciplinas:
+            self.cursor.execute(
+                """SELECT sim1, sim2, av, avs FROM notas 
+                   WHERE aluno=? AND materia=?""",
+                (matricula, disciplina['nome'])
+            )
+            notas = self.cursor.fetchone()
+
+            if notas:
+                sim1, sim2, av, avs = notas
+                media = (sim1 + sim2 + av + avs) / 4
+                total_pontos += media * disciplina['carga']
+                total_cargas += disciplina['carga']
+
+        self.close()
+
+        if total_cargas == 0:
+            return 0.0
+
+        return total_pontos / total_cargas
