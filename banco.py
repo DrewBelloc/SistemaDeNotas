@@ -73,8 +73,26 @@ class Banco:
         except IndexError:
             return False, "Nenhum aluno não encontrado"
 
-    def getSemestre(self, matricula: int, semestre: int):
-        pass
+    def getSemestre(self, matricula: str, semestre: int) -> list:
+        self.connect()
+        self.cursor.execute(
+            f"select * from notas where aluno = {matricula} and periodo = {semestre}"
+            )
+        
+        notas = [
+            {
+                "materia": row[0],
+                "aluno": row[1], 
+                "periodo": row[2],
+                "sim1": row[3],
+                "sim2": row[4],
+                "av": row[5],
+                "avs": row[6]
+            }
+            for row in self.cursor.fetchall()
+        ]
+        self.close()
+        return notas
 
     def addAluno(self, name, matricula, ano=2025):
         self.connect()
