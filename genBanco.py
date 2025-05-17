@@ -6,6 +6,7 @@ cursor = connection.cursor()
 cursor.execute("create table alunos (matricula text, nome text, ano integer)")
 cursor.execute("create table materias (codigo integer, nome text, carga integer)")
 cursor.execute("create table notas (materia text, aluno text, periodo integer, sim1 float, sim2 float, av float, avs float)")
+cursor.execute("create table professores (matricula text, nome text, email text, telefone text, senha text)")
 
 nomes = [
     "Helena",
