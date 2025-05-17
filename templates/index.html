@@ -1,15 +1,27 @@
 {% extends "script.html" %}
 
 {% block body %}
-<div id="container_Pesquisa">
-    <!-- Campo de pesquisa com a lupa ainda visível -->
-    <input type="text" id="pesquisa" placeholder="Pesquisar Aluno...."> <i class="bi bi-search"></i>
+<div class="container">
+    <div class="row align-items-start justify-content-center">
+        <div id="container_Pesquisa" class="col">
+            <!-- Campo de pesquisa com a lupa ainda visível -->
+            <input type="text" id="pesquisa" placeholder="Pesquisar Aluno...."> <i class="bi bi-search"></i>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-primary" type="button">Cadastrar Aluno</button>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col">
+        </div>
+        <div class="col alunos-container">
+            {% block listaDeAlunos %}
+            {% endblock %}
+        </div>
+    </div>
 </div>
 
-<button class="btn btn-primary" type="button">Cadastrar Aluno</button>
 
-{% block listaDeAlunos %}
-{% endblock %}
 
 <script>
     // Captura o campo de pesquisa e a lista de alunos
