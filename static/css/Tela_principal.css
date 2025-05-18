@@ -1,11 +1,17 @@
 body {
-    background-color: #CBAF87;
+    background-color: var(--bg);
+    color: var(--fg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.alunos-container {
+    background-color: var(--surface0);
+    padding: 10px;
+    border-radius: 20px;
+    /*
 #alunosLista {
     position: absolute;
     top: 15px;
@@ -14,15 +20,22 @@ body {
     border-radius: 8px;
     width: 60%;
     height: calc(100vh - 80px);
+    */
     /* Ajusta a altura da lista */
+    /*
     padding: 10px;
     box-sizing: border-box;
     overflow-y: scroll;
+    */
     /* A rolagem será ativada quando necessário */
+    /*
     overflow-x: hidden;
+    */
     /* Esconde a rolagem lateral (horizontal) */
+    /*
     list-style-type: none;
     background-color: #B2B8A3;
+    */
     /* Cor de fundo da lista */
 }
 
@@ -34,7 +47,7 @@ body {
 
 /* Estilo do "polegar" da barra de rolagem */
 #alunosLista::-webkit-scrollbar-thumb {
-    background-color: #504B38;
+    background-color: var(--bg);
     /* Cor da barra de rolagem */
     border-radius: 5px;
     /* Deixa a barra arredondada */
@@ -50,29 +63,35 @@ body {
 #alunosLista li {
     padding: 12px;
     margin-bottom: 5px;
-    background-color: #F2EFE5;
+    background-color: var(--bg);
+    color: var(--fg);
     /* Cor de fundo suave para cada item */
     border-radius: 50px;
-    border: 3px solid #504B38;
+    border: 3px solid var(--overlay0);
     /* Borda fina para os itens */
     transition: background-color 0.3s ease-in-out;
     /* Animação para a cor de fundo */
 }
 
 #alunosLista li:hover {
-    background-color: #D8C9A3;
-    /* Cor de fundo ao passar o mouse sobre os itens */
+    background-color: var(--overlay0);
+    border: 3px solid var(--surface1);
 }
 
 #container_Pesquisa input[type="text"] {
     font-size: 14px;
-    border: 3px solid #504B38;
+    border: 3px solid var(--surface2);
     border-radius: 50px !important;
     width: 29% !important;
     padding: 8px 16px;
     outline: none;
-    background-color: #F2EFE5;
-    color: #504B38;
+    background-color: var(--bg);
+    color: var(--fg);
+}
+
+#container_Pesquisa input[type="text"]:focus {
+    border: 3px solid var(--mauve);
+    background-color: var(--surface1);
 }
 
 #container_Pesquisa {
@@ -82,7 +101,8 @@ body {
 
 .btn.btn-primary {
     color: #F2EFE5;
-    background-color: #504B38;
+    background-color: var(--lavander);
+    color: var(--bg);
     border: none;
     border-radius: 50px !important;
     margin-left: 150px;

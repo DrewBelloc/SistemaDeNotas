@@ -1,8 +1,8 @@
 {% extends "index.html" %}
 
 {% block listaDeAlunos %}
-<div class="container-flex">
-    <ul class="list-group col-8" id="alunosLista">
+<div class="container">
+    <ul class="list-group" id="alunosLista">
         <!-- Exemplo de alunos - o backend pode preencher isso dinamicamente -->
         {% for item in itens %}
         <li class="list-group-item aluno-item" aria-current="true">
