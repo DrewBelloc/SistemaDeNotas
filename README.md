@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# SistemaDeNotas
-Um sistema simples para calcular media de notas de alunos
-=======
 # SistemaDeNotas
 Um sistema simples para calcular media de notas de alunos
 
@@ -46,4 +42,3 @@ Antes de inicializar pela primeira vez é importante gerar um banco de dados ini
 Com o arquivo `banco.db` no root do projeto você pode inicializar o servidor usando
 
 `flask run --debug`
->>>>>>> main
