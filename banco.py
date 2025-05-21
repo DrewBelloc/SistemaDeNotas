@@ -144,7 +144,63 @@ class Banco:
 
         self.close()
         return disciplinas
+    def getAllProfessores(self) -> list:
+        self.connect()
+        self.cursor.execute("select * from professores")
+        professores = [
+            {"matricula": row[0], "nome": row[1], "email": row[2],
+                "telefone": row[3]
+            }
+            for row in self.cursor.fetchall()
+        ]
+        self.close()
+        return professores
 
+    def getProfessores(self, matricula: int) -> dict:
+        self.connect()
+        self.cursor.execute(
+            f"select * from professores where matricula={matricula}"
+        )
+        professores = [
+            {"matricula": row[0], "nome": row[1], "email": row[2],
+                "telefone": row[3]
+            }
+            for row in self.cursor.fetchall()
+        ]
+        self.close()
+        try:
+            return True, professores[0]
+        except IndexError:
+            return False, "Professor não encontrado"
+
+    def addProfessor(self, matricula, nome, email, telefone):
+        self.connect()
+        self.cursor.execute('INSERT INTO professores (matricula, nome, email, telefone) VALUES (?,?,?,?)', (matricula nome, email, telefone))
+        self.connection.commit()
+        self.close()
+
+    def updateNomeProfessor(self, matricula, novo_nome):
+        state, professor = self.getAluno(matricula)
+        if not professor:
+            self.close()
+            return False, "Professor não encontrado"
+
+        if professor['nome'] == novo_nome:
+            self.close()
+            return False, "O novo nome é igual ao atual"
+
+        self.connect()
+        self.cursor.execute('UPDATE professores SET nome = ? WHERE matricula = ?', (novo_nome, matricula))
+        self.connection.commit()
+
+        state, professor_atualizado = self.getProfessor(matricula)
+        if professor_atualizado['nome'] == novo_nome:
+            self.close()
+            return True, professor_atualizado
+        else:
+            self.close()
+            return False, "Falha ao atualizar o nome"
+    
     def calcularCR(self, matricula: str) -> float:
         disciplinas = self.getAllDisciplinas(matricula)
 
