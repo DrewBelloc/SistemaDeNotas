@@ -121,7 +121,14 @@ class Banco:
         else:
             self.close()
             return False, "Falha ao atualizar o nome"
-
+            
+    #deletar aluno pela matricula
+    def delete_aluno(self, matricula):
+        self.connect()
+        self.cursor.execute('DELETE FROM alunos WHERE matricula = ?', matricula)
+        self.connection.commit()
+        self.close()
+    
     def getAllDisciplinas(self, matricula: str) -> list:
         self.connect()
         self.cursor.execute(
@@ -144,6 +151,7 @@ class Banco:
 
         self.close()
         return disciplinas
+        
     def getAllProfessores(self) -> list:
         self.connect()
         self.cursor.execute("select * from professores")
@@ -200,7 +208,14 @@ class Banco:
         else:
             self.close()
             return False, "Falha ao atualizar o nome"
-    
+
+    #deletar professor pela matricula
+    def delete_professor(self, matricula):
+        self.connect()
+        self.cursor.execute('DELETE FROM professores WHERE matricula = ?', matricula)
+        self.connection.commit()
+        self.close()
+        
     def calcularCR(self, matricula: str) -> float:
         disciplinas = self.getAllDisciplinas(matricula)
 
