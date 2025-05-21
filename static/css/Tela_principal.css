@@ -7,6 +7,16 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.header {
+    background-color: var(--darker);
+}
+
+#profile-pic {
+    max-width: 50px;
+    max-height: 50px;
+    aspect-ratio: 1 / 1;
+}
+
 .alunos-container {
     background-color: var(--surface0);
     padding: 10px;
