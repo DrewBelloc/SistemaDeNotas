@@ -132,14 +132,14 @@ class Banco:
     def getAllDisciplinas(self, matricula: str) -> list:
         self.connect()
         self.cursor.execute(
-            "SELECT materia FROM notas WHERE aluno=?", (matricula,)
+            "SELECT materia FROM notas WHERE aluno=?", matricula
         )
         materias_notas = [row[0] for row in self.cursor.fetchall()]
 
         disciplinas = []
         for materia_nome in materias_notas:
             self.cursor.execute(
-                "SELECT * FROM materias WHERE nome=?", (materia_nome,)
+                "SELECT * FROM materias WHERE nome=?", materia_nome
             )
             materia = self.cursor.fetchone()
             if materia:
