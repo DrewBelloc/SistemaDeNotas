@@ -1,9 +1,16 @@
 from banco import Banco
 from flask import Flask, render_template, redirect, url_for
+from flask_login import LoginManager
 
 app = Flask(__name__)
+login_manager = LoginManager()
 db = Banco()
 
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
 
 # Rota para a tela padrão
 @app.route("/")  # Define a URL que o cliente irá acessar
@@ -11,7 +18,7 @@ def index():  # Função que será ativada quando o cliente acessar a URL acima
     alunos = db.getAllAlunos()
     # Ordena os alunos por nome
     alunos.sort(key=lambda x: x["nome"])
-    return render_template("lista.html", itens=alunos)
+    return render_template("lista.html", itens=alunos, nome="Marcelo")
 
 
 @app.route("/aluno/<matricula>")
