@@ -8,10 +8,17 @@ body {
 }
 
 .header {
+    font-family: Arial, Helvetica, sans-serif;
     background-color: var(--darker);
 }
 
 #profile-pic {
+    max-width: 50px;
+    max-height: 50px;
+    aspect-ratio: 1 / 1;
+}
+
+#settings {
     max-width: 50px;
     max-height: 50px;
     aspect-ratio: 1 / 1;
@@ -92,7 +99,8 @@ body {
     font-size: 14px;
     border: 3px solid var(--surface2);
     border-radius: 50px !important;
-    width: 29% !important;
+    /* width: 29% !important;
+* */
     padding: 8px 16px;
     outline: none;
     background-color: var(--bg);
@@ -104,9 +112,9 @@ body {
     background-color: var(--surface1);
 }
 
+
 #container_Pesquisa {
-    margin-top: 15px;
-    margin-left: 15px;
+    margin-bottom: 5px;
 }
 
 .btn.btn-primary {
@@ -115,8 +123,6 @@ body {
     color: var(--bg);
     border: none;
     border-radius: 50px !important;
-    margin-left: 150px;
-    margin-top: 30px;
 }
 
 @media (max-width: 768px) {

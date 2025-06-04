@@ -1,7 +1,16 @@
 {% extends "index.html" %}
 
 {% block listaDeAlunos %}
-<div class="container">
+<div class="container aligh-items-end">
+        <div id="container_Pesquisa" class="row">
+            <!-- Campo de pesquisa com a lupa ainda visível -->
+        <div class="col-8">
+            <input type="text" id="pesquisa" placeholder="Pesquisar Aluno...."> <i class="bi bi-search"></i>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" type="button">Cadastrar Aluno</button>
+        </div>
+        </div>
     <ul class="list-group" id="alunosLista">
         <!-- Exemplo de alunos - o backend pode preencher isso dinamicamente -->
         {% for item in itens %}
