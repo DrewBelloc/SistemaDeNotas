@@ -183,7 +183,7 @@ class Banco:
 
     def addProfessor(self, matricula, nome, email, telefone):
         self.connect()
-        self.cursor.execute('INSERT INTO professores (matricula, nome, email, telefone) VALUES (?,?,?,?)', (matricula nome, email, telefone))
+        self.cursor.execute('INSERT INTO professores (matricula, nome, email, telefone) VALUES (?,?,?,?)', (matricula, nome, email, telefone))
         self.connection.commit()
         self.close()
 
