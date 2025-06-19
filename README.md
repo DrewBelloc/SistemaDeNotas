@@ -1,6 +1,9 @@
 # SistemaDeNotas
 Um sistema simples para calcular media de notas de alunos
 
+## Apresentação
+[link para o video](https://drive.google.com/file/d/11LauCjCJs-SV0nvmk8OVB-DUIEKHW_Q8/view?usp=sharing)
+
 ## Setup
 
 Antes de tudo confirme que python e pip estão instalados na sua maquina
